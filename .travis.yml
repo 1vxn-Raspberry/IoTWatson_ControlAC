@@ -1,0 +1,40 @@
+group: bluezone
+language: node_js
+node_js:
+  - "8"
+sudo: true
+cache:
+  directories:
+  - node_modules
+node_js: stable
+branches:
+  - master
+  - dev
+deploy:
+  - provider: cloudfoundry
+    api: https://api.w3ibm.bluemix.net
+    username: $CF_USERNAME
+    password: $CF_PASSWORD
+    organization: RESOGDL
+    space: dev
+    manifest: manifest.dev.yml
+    name: monitoreocuartosIT-dev
+    on:
+      repo: Cuarto-de-cables-team/monitoreocuartocablesIT
+      branch: master
+  - provider: cloudfoundry
+    api: https://api.w3ibm.bluemix.net
+    username: $CF_USERNAME
+    password: $CF_PASSWORD
+    organization: RESOGDL
+    space: dev
+    manifest: manifest.dev.yml
+    name: monitoreocuartosIT-dev
+    on:
+      repo: Cuarto-de-cables-team/monitoreocuartocablesIT
+      branch: dev
+before_install:
+  - nvm install 8.9.1
+  - nvm use 8.9.1
+  - npm install -g typescript
+  - npm install -g @angular/cli
