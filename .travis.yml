@@ -20,7 +20,7 @@ deploy:
     manifest: manifest.dev.yml
     name: monitoreocuartosIT-dev
     on:
-      repo: Cuarto-de-cables-team/monitoreocuartocablesIT
+      repo: Cuarto-de-cables-team/Monitoreo-app
       branch: master
   - provider: cloudfoundry
     api: https://api.w3ibm.bluemix.net
@@ -31,7 +31,7 @@ deploy:
     manifest: manifest.dev.yml
     name: monitoreocuartosIT-dev
     on:
-      repo: Cuarto-de-cables-team/monitoreocuartocablesIT
+      repo: Cuarto-de-cables-team/Monitoreo-app
       branch: dev
 before_install:
   - nvm install 8.9.1
