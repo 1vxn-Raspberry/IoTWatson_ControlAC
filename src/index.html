@@ -7,6 +7,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js"></script>
+  <script>
+  var URL_SERVER = 'https://localhost:60001';
+  var socket = io.connect(URL_SERVER);
+  /*var socket = io(window.location.hostname);*/
+  </script>
 </head>
 <body>
   <app-root></app-root>

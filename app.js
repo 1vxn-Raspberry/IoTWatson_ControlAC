@@ -10,20 +10,21 @@ var app = express();
 var appEnv = cfenv.getAppEnv();
 const config = require('./config.js');
 config.loadCredentials(appEnv);//loading credentials
-
+var auth = require('./auth/authController.js')(app,path);
 
 //auth temp
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+
+// Location of the views (html)
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 
-// Catch all other routes and return the index file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+
+
 var monitoring = require("./controllers/monitoringController.js");
 var slack = require("./controllers/slackController.js");
 
@@ -34,10 +35,7 @@ slack.initSlackService((status)=>{
   })
 });
 
-app.get('/holo', (req, res) => {
-  res.send(200);
-});
-var auth = require('./auth/authController.js')(app);
+
 var main = require('./controllers/main.js');
 
 
