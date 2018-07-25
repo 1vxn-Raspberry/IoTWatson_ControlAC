@@ -1,6 +1,7 @@
 var config = {};
 config.loadCredentials = function(appEnv){
   if (appEnv.isLocal){
+    console.log("Running Locally");
     //Local env
     env_variables = require('node-env-file')(__dirname + '/.env', {raise: false});
     this.cloudant_password = env_variables.cloudant_password;
