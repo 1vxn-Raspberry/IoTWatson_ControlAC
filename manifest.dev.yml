@@ -1,8 +1,8 @@
 applications:
 - path: .
-  memory: 512M
+  memory: 1024M
   instances: 1
   domain: w3ibm.mybluemix.net
   name: monitoreocuartosIT-dev
   host: monitoreocuartosIT-dev
-  disk_quota: 512M
+  disk_quota: 1024M

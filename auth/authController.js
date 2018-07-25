@@ -1,10 +1,10 @@
-module.exports = function(app){
+module.exports = function(app,path){
   var  serviceAuth = require('./authService.js');
   var passport = require('passport');
   var cookieParser = require('cookie-parser');
   const config = require('./../config.js');
   var session = require('express-session');
-
+  var dirname = __dirname.replace("auth","");
   app.use(cookieParser());
 
   app.use(session({resave: 'true', saveUninitialized: 'true' , secret: 'OTc5MjU2ZmMtM2RjNy00'}));
@@ -78,7 +78,7 @@ module.exports = function(app){
 
   app.get('/',serviceAuth.ensureAuthenticated, function (req,res){
   //  if(serviceAuth.isItOnOurBlueGroup(req.user['_json'].blueGroups)){
-      res.render("index");
+      res.sendFile(path.join(dirname, 'dist/index.html'));
     //}
   //  else{
   //   res.render('Failure');
